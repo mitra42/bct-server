@@ -107,6 +107,7 @@ class FSBackedThreeLevelDict():
         dir_name = '%s/%s/%s/%s' % (self.directory, chunks[0], chunks[1], chunks[2])
         return (chunks, dir_name)
 
+    # Insert value (obj) at key, keep updatetoken index to it
     def insert(self, key, value, date):
         if str != type(key):
             key = self._make_key(key)
@@ -138,6 +139,9 @@ class FSBackedThreeLevelDict():
             self.update_index[updatetoken] = file_name
         self._insert_disk(key)
         self.item_count += 1
+        update_token = value.get('updatetoken')
+        if update_token:
+            self.update_index[update_token] = file_name
         return
 
     def map_over_matching_data(self, key):
