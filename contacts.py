@@ -469,6 +469,8 @@ class Contacts:
                 return list(self.spatial_dict.retrieve_json_from_file_paths(spatial_file_paths))
 
             ret['locations'] = get_location_id_data
+        # more_data will be set to True when we start catching large results and only returning some of them (issue#120)
+        ret['more_data'] = False
         ret['until'] = iso_time_from_seconds_since_epoch(now)
         return ret
 
