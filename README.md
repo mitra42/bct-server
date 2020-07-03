@@ -58,6 +58,15 @@ log_level can be any of 'debug', 'info', 'warn', 'error', 'critical' and overrid
 # trying client
 
 * ``curl -i -X POST -H "Content-Type: application/json" -d '{  "memo":  {}, "contacts": [     { "id": "2345635"}]}' http://localhost:8080/status/send``
-* ``curl -i -X POST -H "Content-Type: application/json" -d '{ "since":"2020-04-10T0523Z",  "contact_prefixes":[  "234"]}' http://localhost:8080/status/scan``
+* ``curl -i -X POST -H "Content-Type: application/json" -d '{ "since":"2020-04-10T21:47:00Z",  "contact_prefixes":[  "234"]}' http://localhost:8080/status/scan``
 * ``curl -i  http://localhost:8080/sync?since=1970-01-01T0000Z``
 
+
+# Heroku deployment
+
+### Add Procfile
+
+### Test with Curl
+
+* `curl -i https://bct-server-staging.herokuapp.com/sync`
+* `curl -i -X POST -H "Content-Type: application/json" -d '{ "since":"2020-04-10T21:47:00Z",  "contact_prefixes":["234"]}' https://bct-server-staging.herokuapp.com/status/scan`
